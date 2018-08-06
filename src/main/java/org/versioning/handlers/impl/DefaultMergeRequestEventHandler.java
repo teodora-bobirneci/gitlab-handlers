@@ -1,21 +1,26 @@
 package org.versioning.handlers.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.versioning.email.EmailMessage;
 import org.versioning.email.EmailSenderService;
 import org.versioning.handlers.MergeRequestEventHandler;
+import org.versioning.model.EmailMessage;
 
 @Service
 public class DefaultMergeRequestEventHandler implements MergeRequestEventHandler {
 
+    private static Logger logger = LoggerFactory.getLogger(DefaultMergeRequestEventHandler.class);
 
-    @Autowired private EmailSenderService emailSenderService;
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     @Override
-    @Async
+    @Async("gitlabHandlers-executor")
     public void doHandle(String event) {
+        logger.info(Thread.currentThread().getName() + ": Execute method asynchronously. ");
         sendMail(event);
     }
 

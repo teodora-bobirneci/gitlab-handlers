@@ -2,6 +2,7 @@ package org.versioning.email;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.versioning.model.EmailMessage;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;

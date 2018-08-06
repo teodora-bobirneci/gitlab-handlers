@@ -1,4 +1,4 @@
-package org.versioning.email;
+package org.versioning.model;
 
 import lombok.Getter;
 import lombok.Setter;

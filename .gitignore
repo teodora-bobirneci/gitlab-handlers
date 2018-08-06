@@ -1,3 +1,4 @@
 gitlab-handlers.iml
 target/
 .idea
+.logs
